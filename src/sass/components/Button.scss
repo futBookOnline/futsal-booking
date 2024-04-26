@@ -1,0 +1,22 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.btn { 
+   cursor: pointer;
+}
+
+.btn-primary {
+  @extend .btn;
+  @include dimension(auto, auto);
+  @include boxBorder(0, .5rem 1.25rem);
+  @include border(.1rem, $slate-blue, .25rem);
+  background-color: $slate-blue;
+  color: $white;
+  font-weight: 600;
+  outline: transparent;
+  transition: opacity .25s ease-in-out;
+}
+
+.btn-primary:hover {
+  opacity: .95;
+}

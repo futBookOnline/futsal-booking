@@ -1,0 +1,7 @@
+@use "../abstracts/mixins" as *;
+
+.global-layout {
+    @include boxBorder(0, 2rem);
+    @include dimension(100%, 100%);
+}
+

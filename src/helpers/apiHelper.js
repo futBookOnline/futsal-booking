@@ -1,14 +1,14 @@
 import axios from "axios";
 
-const hitApi = async (url, method, payload) => {
-  const urlA = `https://futsal-backend.onrender.com/${url}`;
-  const methodA = method.toUpperCase();
+const useRelatedApi = async (url, method, payload) => {
+  const apiUrl = `https://futsal-backend.onrender.com/${url}`;
+  const httpMethod = method.toUpperCase();
   let result;
-  switch (methodA) {
+  switch (httpMethod) {
     case "GET":
-      result = await axios.get(urlA);
+      result = await axios.get(apiUrl);
       return result.data.futsals;
   }
 };
 
-export default hitApi
+export default useRelatedApi
