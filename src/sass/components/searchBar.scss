@@ -1,0 +1,8 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.search-bar{
+    @include dimension(25rem, 2.5rem);
+    @include border(.1rem, $spring-green, .5rem);
+    background-color: transparent;
+}

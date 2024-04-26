@@ -1,0 +1,9 @@
+@use "../abstracts/mixins" as *;
+
+
+.home-header{
+    @include dimension(100%, auto);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

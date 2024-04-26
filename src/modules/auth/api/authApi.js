@@ -1,13 +1,13 @@
-import hitApi from "../../../helpers/apiHelper";
+import useRelatedApi from "../../../helpers/apiHelper";
 
 const getFutsal = async () => {
-    const apiCall = await hitApi("futsals", "GET", null)
+    const apiCall = await useRelatedApi("futsals", "GET", null)
     const data = await apiCall
     return data
 }
 
 const registerUser = async (payload) => {
-    const result = await hitApi("users", "POST", payload)
+    const result = await useRelatedApi("users", "POST", payload)
 }
 
 export default getFutsal

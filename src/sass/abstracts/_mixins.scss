@@ -1,0 +1,18 @@
+@mixin boxBorder ($margin, $padding) {
+    margin: $margin;
+    padding: $padding;
+    box-sizing: border-box;
+}
+
+@mixin dimension ($width, $height){
+    width: $width;
+    height: $height;
+}
+
+@mixin border ($width, $color, $radius, $type:solid){
+    border-width: $width;
+    border-style: $type;
+    border-color: $color;
+    border-radius: $radius;
+}
+
