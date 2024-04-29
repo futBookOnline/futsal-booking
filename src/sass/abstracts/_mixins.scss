@@ -1,3 +1,5 @@
+@use "../abstracts/variables" as *;
+
 @mixin boxBorder ($margin, $padding) {
     margin: $margin;
     padding: $padding;
@@ -16,3 +18,8 @@
     border-radius: $radius;
 }
 
+@mixin font($size,$weight, $color:$dark){
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}

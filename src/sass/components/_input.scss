@@ -1,8 +1,15 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
+.default-input {
+    outline: transparent;
+}
+
 .search-bar{
+    @extend .default-input;
     @include dimension(25rem, 2.5rem);
     @include border(.1rem, $spring-green, .5rem);
+    @include boxBorder(0, 0 .85rem);
+    @include font(.95rem, 500);
     background-color: transparent;
 }
