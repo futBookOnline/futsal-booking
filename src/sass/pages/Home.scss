@@ -1,9 +1,99 @@
 @use "../abstracts/mixins" as *;
+@use "../components/card" as *;
+@use "../abstracts/variables" as *;
 
+.home-header {
+  @include dimension(100%, auto);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-.home-header{
-    @include dimension(100%, auto);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.futsal-container-headings{
+  font-weight: 500;
+  font-size: 2.25rem;
+}
+
+.cards-container {
+  @include dimension(100%, auto);
+  @include flexBox(start, center, 3rem);
+}
+
+.nearby-container {
+  @include dimension(100%, auto);
+  @include boxBorder(5rem 0 0 0, 0);
+
+  .nearby-futsals {
+   @extend .futsal-container-headings
+  }
+}
+
+.nearby-container-header {
+  @include flexBox(space-between, center);
+  margin-bottom: 0.35rem;
+
+  .pagination-container {
+    @include flexBox(start, center, 0.5rem);
+
+    svg {
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: color 0.25s ease-in-out;
+
+      &:hover {
+        color: $sea-green;
+      }
+    }
+  }
+}
+
+.all-container {
+  @include dimension(100%, auto);
+  @include boxBorder(5rem 0 0 0, 0);
+
+  .all-futsals {
+    @extend .futsal-container-headings;
+  }
+}
+
+.all-container-header {
+  @include flexBox(space-between, center);
+  margin-bottom: 0.35rem;
+
+  .pagination-container {
+    @include flexBox(start, center, 0.5rem);
+
+    svg {
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: color 0.25s ease-in-out;
+
+      &:hover {
+        color: $sea-green;
+      }
+    }
+  }
+}
+
+.futsal-card {
+  @extend .card-default;
+  @include dimension(21.75rem, 12.85rem);
+  min-width: 21.75rem;
+  overflow: hidden;
+  border-width: 0.15rem;
+  border-radius: 0.75rem;
+  box-shadow: none;
+  transition: border 0.25s ease-in-out;
+  background-color: #f2f2f2;
+
+  &:hover {
+    border-color: $sea-green;
+    cursor: pointer;
+  }
+
+  &:nth-of-type(5) {
+    opacity: 0.25;
+    cursor: none;
+    pointer-events: none;
+  }
 }

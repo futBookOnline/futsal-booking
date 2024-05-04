@@ -4,14 +4,18 @@
 
 @use "./components/input.scss";
 @use "./components/button.scss";
+@use "./components/card.scss";
 
 @use "./pages/Home.scss";
+
+@use "./base/typography.scss";
 
 
 
 * {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 #root{
