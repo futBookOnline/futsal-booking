@@ -8,8 +8,14 @@
 .search-bar{
     @extend .default-input;
     @include dimension(25rem, 2.5rem);
-    @include border(.1rem, $spring-green, .5rem);
+    @include border(.15rem, $light-gray, 1.5rem);
     @include boxBorder(0, 0 .85rem);
     @include font(.95rem, 500);
     background-color: transparent;
+    transition: border .28s ease-in-out;
+
+    &:focus,
+    &:hover{
+        @include border(.15rem, $sea-green, 1.5rem);
+    }
 }

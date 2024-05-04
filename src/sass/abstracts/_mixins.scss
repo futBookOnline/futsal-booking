@@ -23,3 +23,26 @@
   font-weight: $weight;
   color: $color;
 }
+
+@mixin boxShadow($offset, $color,$radius:0.01rem,){
+    box-shadow: $offset $radius $color;
+}
+
+@mixin flexBox($justify, $align, $gap:0, $wrap:""){
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+    gap: $gap;
+}
+
+@mixin absolutePosition($top:"", $left:"", $right:"", $bottom:""){
+   position: absolute;
+   top: $top;
+   left: $left;
+   right: $right;
+   bottom: $bottom;
+}
+
+
+
