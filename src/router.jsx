@@ -5,7 +5,7 @@ import { Route } from "react-router-dom";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
-  { path: "/futsals/:futsal_name", element: <Futsal /> },
+  { path: "/futsals/:name", element: <Futsal /> },
   { path: "*", element: <p>Error 404! page not found</p> },
 ]);
 

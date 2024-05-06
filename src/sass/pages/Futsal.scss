@@ -1,0 +1,44 @@
+// @use "../abstracts/mixins" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+@use "../base/typography" as *;
+
+.futsal-content-wrapper{
+    @include flexBox(start,center, 5rem);
+    @include dimension(100%, auto);
+    @include boxBorder(5rem 0 0 0, 0);
+
+    .info-section {
+        @include dimension(40%, auto);
+    }
+}
+
+.futsal-info-header{
+    @include dimension(100%, fit-content);
+    @include flexBox(space-between, center)
+}
+
+.current-futsal-name{
+  @extend .heading
+}
+
+.futsal-details{
+  height: 70vh;
+  margin-top: 2.5rem;
+
+  &>img{
+    max-height: 70%;
+    object-fit: cover;
+  }
+
+  .futsal-name{
+    @extend .sub-heading;
+  }
+
+  .futsal-location, .futsal-price{
+    @extend .info-text
+  }
+}
+
+
