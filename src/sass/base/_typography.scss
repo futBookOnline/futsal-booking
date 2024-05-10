@@ -5,3 +5,20 @@ $default-font : "Poppins", sans-serif;
 *{
     font-family: $default-font;
 }
+
+
+.heading {
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+.sub-heading{
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+.info-text {
+    font-size: .98rem;
+    font-weight: 500;
+    color: gray;
+}

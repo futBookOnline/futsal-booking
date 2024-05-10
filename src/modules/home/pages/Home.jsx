@@ -4,35 +4,37 @@ import Header from "@/modules/home/components/Header";
 import FutsalCard from "@/modules/home/components/FutsalCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
+
 const futsals = [
   {
-    name: "Wembley",
+    name: "Wembley Futsal",
     isAvailable: true,
     location: "Kaushaltar, Bhaktapur",
     price: "1000",
   },
   {
-    name: "Wembley",
+    name: "Royal Futsal",
     isAvailable: true,
-    location: "Kaushaltar, Bhaktapur",
+    location: "Baneswor, Kathmandu",
     price: "1000",
   },
   {
-    name: "Wembley",
+    name: "Dhanwantari Arena",
     isAvailable: true,
-    location: "Kaushaltar, Bhaktapur",
+    location: "Kupandole, Lalitpur",
     price: "1000",
   },
   {
-    name: "Wembley",
+    name: "Velocity Arena",
     isAvailable: true,
-    location: "Kaushaltar, Bhaktapur",
+    location: "Ratopul, Kathmandu",
     price: "1000",
   },
   {
-    name: "Wembley",
+    name: "GA Hall",
     isAvailable: true,
-    location: "Kaushaltar, Bhaktapur",
+    location: "Thamel, Kathmandu",
     price: "1000",
   },
 ];

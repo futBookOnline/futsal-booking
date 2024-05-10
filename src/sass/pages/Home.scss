@@ -84,7 +84,7 @@
   border-radius: 0.75rem;
   box-shadow: none;
   transition: border 0.25s ease-in-out;
-  background-color: #f2f2f2;
+  background-color: $extra-light-grey;
 
   &:hover {
     border-color: $sea-green;
