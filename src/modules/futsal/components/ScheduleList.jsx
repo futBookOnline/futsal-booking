@@ -18,19 +18,21 @@ const ScheduleList = () => {
         list.push(`${currentHour - 12}:00 PM - ${currentHour + 1 - 12}:00 PM`);
       }
 
-      currentHour+=1;
+      currentHour += 1;
     }
     return list;
   };
 
   return (
-      getSchedule().map((item,id) => {
+    <div className="schedule_list">
+      {getSchedule().map((item, id) => {
         return (
-          <div key={id} className="schedule-list">
+          <div key={id} className="list_itemu">
             {item}
           </div>
         );
-      })
+      })}
+    </div>
   );
 };
 

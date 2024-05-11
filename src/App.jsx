@@ -1,9 +1,13 @@
+import { NextUIProvider } from "@nextui-org/react";
 import { Outlet } from "react-router-dom";
+
 const App = () => {
   return (
     <>
       {/*The outlet form the router is displayed here*/}
-      <Outlet />
+      <NextUIProvider>
+        <Outlet />
+      </NextUIProvider>
       {/*The outlet form the router is displayed here*/}
     </>
   );
