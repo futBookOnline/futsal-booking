@@ -1,7 +1,8 @@
-import
 
-const Form = ({ childern, action }) => {
-  return <form action={action}>{childern}</form>;
+const Form = () => {
+  return <form></form>;
 };
+
+export default Form;
 
 

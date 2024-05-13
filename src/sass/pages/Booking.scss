@@ -1,0 +1,25 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.booking_page_wrapper {
+  @include boxBorder(5rem 0 0 0, 0);
+}
+
+.booking_form_wrapper {
+  @include flexBox(column, start, start, 0.75rem);
+  max-width: 45%;
+}
+
+.advance_payment_notice {
+  @include flexBox(row, start, center, .95rem);
+  @include font(.9rem, 400);
+
+  & > span {
+    cursor: pointer;
+    @include font(0.8rem, 700, $steel-blue);
+  }
+
+  &>span:hover{
+    text-decoration: underline;
+  }
+}

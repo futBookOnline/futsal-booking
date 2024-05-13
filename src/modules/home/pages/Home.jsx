@@ -1,5 +1,5 @@
 import GlobalLayout from "@/layouts/global/GlobalLayout";
-import Header from "@/modules/home/components/Header";
+import Header from "@/components/Header/Header";
 // import Card from "@/components/Cards/Card";
 import FutsalCard from "@/modules/home/components/FutsalCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

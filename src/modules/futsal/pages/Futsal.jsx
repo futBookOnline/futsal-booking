@@ -1,18 +1,20 @@
 import GlobalLayout from "@/layouts/global/GlobalLayout";
-import Header from "@/modules/home/components/Header";
-import Button from "@/components/FormElements/Button";
+import Header from "@/components/Header/Header";
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ScheduleList from "@/modules/futsal/components/ScheduleList";
 import BasicModal from "@/components/Modal/BasicModal";
 import Calendar from "@/components/Calendar/Calendar";
+import { getShortMonthName } from "@/helpers/dateHelper";
+import Separator from "@/components/Separator/Separator";
 
 const Futsal = () => {
   {
     /*getting current futsal details from route*/
   }
-  const currentFutsal = useLocation()?.state?.futDetail;
-  console.info(currentFutsal);
+
+  const currentDate = new Date();
+  const currentFutsal = useLocation().state?.futDetail;
 
   return (
     <GlobalLayout>
@@ -51,7 +53,24 @@ const Futsal = () => {
             </div>
           </div>
           <div className="schedule_list_container">
-            <ScheduleList />
+            <div className="schedule_header_date">
+              <p>
+                {getShortMonthName(currentDate.getMonth()) +
+                  " " +
+                  currentDate.getDate() +
+                  ", " +
+                  currentDate.getFullYear()}
+              </p>
+              <BasicModal
+                isButtonIconOnly={true}
+                buttonIconClass="fa-solid fa-calendar"
+                title="Pick a date"
+              >
+                <Calendar />
+              </BasicModal>
+            </div>
+            <Separator styleClass="my-3" />
+            <ScheduleList futsalDetail={currentFutsal}/>
           </div>
         </div>
       </div>

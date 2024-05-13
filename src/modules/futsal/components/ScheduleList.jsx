@@ -1,4 +1,13 @@
-const ScheduleList = () => {
+import BasicCard from "@/components/Cards/BasicCard";
+import { useNavigate } from "react-router-dom";
+
+const ScheduleList = ({ futsalDetail }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (futsalDetail) => {
+    navigate("/booking/" + futsalDetail?.name, { state: futsalDetail });
+  };
+
   const getSchedule = () => {
     const openingTime = 6;
     const closingTime = 18;
@@ -27,9 +36,11 @@ const ScheduleList = () => {
     <div className="schedule_list">
       {getSchedule().map((item, id) => {
         return (
-          <div key={id} className="list_itemu">
-            {item}
-          </div>
+          <BasicCard
+            key={id}
+            cardText={item}
+            clickEvent={() => handleCardClick(futsalDetail)}
+          />
         );
       })}
     </div>

@@ -1,10 +1,13 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-.card-default{
-    @include dimension(auto, auto);
-    @include boxBorder(0, .5rem .85rem);
-    @include boxShadow(.1rem .1rem, $light-gray);
-    @include border(.1rem, $light-gray, .75rem);
+.card-default {
+  @include dimension(auto, auto);
+  @include boxBorder(0, 0.5rem 0.85rem);
+  @include boxShadow(0.1rem 0.1rem, $light-gray);
+  @include border(0.1rem, $light-gray, 0.75rem);
 }
 
+.basic_card {
+  cursor: pointer;
+}

@@ -74,3 +74,7 @@
   @include boxBorder(0, 1.5rem);
   @include border(.1rem, $dark, .85rem);
 }
+
+.schedule_header_date{
+  @include flexBox(row, space-between, center);
+}

@@ -7,6 +7,7 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
+  button,
 } from "@nextui-org/react";
 
 export default function BasicModal({
@@ -16,13 +17,15 @@ export default function BasicModal({
   children,
   showActionButton = false,
   actionButtonText,
+  isButtonIconOnly = false,
+  buttonIconClass
 }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <>
-      <Button onPress={onOpen}>
-        {openModalIcon && <FontAwesomeIcon icon={openModalIcon} />}
+      <Button onPress={onOpen} isIconOnly={isButtonIconOnly}>
+        {buttonIconClass && <FontAwesomeIcon icon={buttonIconClass} />}
         {openModalText && openModalText}
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
