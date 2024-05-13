@@ -1,4 +1,16 @@
-const ScheduleList = () => {
+import BasicCard from "@/components/Cards/BasicCard";
+import { useNavigate } from "react-router-dom";
+
+const ScheduleList = ({ bookingDetails }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (bookingDetails, item) => {
+    bookingDetails["bookingTime"] = item;
+    navigate("/booking/" + bookingDetails?.futsalName, {
+      state: bookingDetails,
+    });
+  };
+
   const getSchedule = () => {
     const openingTime = 6;
     const closingTime = 18;
@@ -18,19 +30,23 @@ const ScheduleList = () => {
         list.push(`${currentHour - 12}:00 PM - ${currentHour + 1 - 12}:00 PM`);
       }
 
-      currentHour+=1;
+      currentHour += 1;
     }
     return list;
   };
 
   return (
-      getSchedule().map((item,id) => {
+    <div className="schedule_list">
+      {getSchedule().map((item, id) => {
         return (
-          <div key={id} className="schedule-list">
-            {item}
-          </div>
+          <BasicCard
+            key={id}
+            cardText={item}
+            clickEvent={() => handleCardClick(bookingDetails, item)}
+          />
         );
-      })
+      })}
+    </div>
   );
 };
 

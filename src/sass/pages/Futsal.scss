@@ -1,98 +1,80 @@
-// @use "../abstracts/mixins" as *;
 @use "../abstracts/mixins" as *;
+@use "../base/typography" as *;
 @use "../abstracts/variables" as *;
 
-@use "../base/typography" as *;
-
-.futsal-content-wrapper {
-  @include flexBox(start, startp, 5rem);
+.futsal_content_wrapper {
   @include dimension(100%, auto);
-  @include boxBorder(5rem 0 0 0, 0);
-
-  .info-section {
-    @include dimension(100%, auto);
-  }
+  @include flexBox(row, space-between, start);
+  margin-top: 5rem;
 }
 
-.futsal-info-header {
-  @include dimension(100%, fit-content);
-  @include flexBox(space-between, center);
+.futsal_info_wrapper {
+  @include dimension(47%, auto);
 }
 
-.current-futsal-name {
+.current_futsal_heading {
   @extend .heading;
+  margin-bottom: 0.75rem;
 }
 
-.futsal-details {
-  height: 70vh;
-  margin-top: 2.5rem;
+.futsal_detail_section {
+  margin-top: 0.75rem;
+}
 
-  & > img {
-    max-height: 70%;
-    object-fit: cover;
-  }
+.futsal_detail_box {
+  @include flexBox(row, start, center, 0.75rem);
 
-  .futsal-name {
-    @extend .sub-heading;
-  }
-
-  .futsal-location,
-  .futsal-price {
-    @extend .info-text;
-  }
-
-  .location-box,
-  .price-box {
-    @include flexBox(start, center, 0.85rem);
+  & > svg,
+  & > p:first-of-type {
+    font-size: 1.15rem;
   }
 }
 
-.schedule-container {
-  max-width: 50%;
-}
-
-.schedule-section {
-  @include border(0.1rem, grey, 0.85rem);
-  @include boxBorder(0, 2.5rem);
-  @include flexBox(start, start, 0.5rem, wrap);
-  max-height: 35vh;
-}
-
-.schedule-list {
-  @include boxBorder(0, 0.75rem);
-  @include dimension(fit-content, fit-content);
-  @include flexBox(center, center);
-  @include border(0.15rem, $light-gray, 0.5rem);
+.futsal_location_map {
+  @include font(0.85rem, 500, $steel-blue);
   cursor: pointer;
-}
+  margin-left: 1.5rem;
 
-.schedule-legend {
-  @include dimension(100%, fit-content);
-  @include flexBox(flex-end, center);
-
-  &>div{
-    @include flexBox(start, center)
+  &:hover {
+    text-decoration: underline;
   }
 }
 
-.legend-section{
-  @include flexBox(flex-end, center,1.5rem);
-  @include boxBorder(0 0 .75rem 0,0 .35rem 0 0);
+.schedule_wrapper {
+  @include dimension(45%, auto);
+  @include flexBox(column, start, start, .75rem);
+}
 
-  &>div{
-    @include flexBox(start,center, .35rem)
-  }
+.schedule_availablitiy_indicators {
+  @include dimension(100%, auto);
+  @include flexBox(row, flex-end, center, 2.5rem);
+}
 
-  &>div>span{
-    display: block;
-    @include dimension(.85rem, .85rem);
-  }
+.available_indicator,
+.unavailable_indicator {
+  @include flexBox(row, start, center, 0.85rem);
+}
 
-  &>div>span:first-of-type{
-    background-color: $sea-green;
-  }
+.available_indicator > div,
+.unavailable_indicator > div {
+  @include dimension(1.5rem, 1.5rem);
+  @include border(0.1rem, transparent, 50%);
+}
 
-  &>div:nth-of-type(2)>span{
-    background-color: red;
-  }
+.available_indicator > div {
+  background-color: $sea-green;
+}
+
+.unavailable_indicator > div {
+  background-color: $notice-red;
+}
+
+.schedule_list_container{
+  @include dimension(100%, auto);
+  @include boxBorder(0, 1.5rem);
+  @include border(.1rem, $dark, .85rem);
+}
+
+.schedule_header_date{
+  @include flexBox(row, space-between, center);
 }

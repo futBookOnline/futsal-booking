@@ -16,7 +16,7 @@
 
 .cards-container {
   @include dimension(100%, auto);
-  @include flexBox(start, center, 3rem);
+  @include flexBox(row,start, center, 3rem);
 }
 
 .nearby-container {
@@ -29,11 +29,11 @@
 }
 
 .nearby-container-header {
-  @include flexBox(space-between, center);
+  @include flexBox(row,space-between, center);
   margin-bottom: 0.35rem;
 
   .pagination-container {
-    @include flexBox(start, center, 0.5rem);
+    @include flexBox(row,start, center, 0.5rem);
 
     svg {
       font-size: 1.25rem;
@@ -57,11 +57,11 @@
 }
 
 .all-container-header {
-  @include flexBox(space-between, center);
+  @include flexBox(row,space-between, center);
   margin-bottom: 0.35rem;
 
   .pagination-container {
-    @include flexBox(start, center, 0.5rem);
+    @include flexBox(row,start, center, 0.5rem);
 
     svg {
       font-size: 1.25rem;

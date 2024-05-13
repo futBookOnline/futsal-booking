@@ -1,48 +1,51 @@
 @use "../abstracts/variables" as *;
 
-@mixin boxBorder ($margin, $padding) {
-    margin: $margin;
-    padding: $padding;
-    box-sizing: border-box;
+@mixin boxBorder($margin, $padding) {
+  margin: $margin;
+  padding: $padding;
+  box-sizing: border-box;
 }
 
-@mixin dimension ($width, $height){
-    width: $width;
-    height: $height;
+@mixin dimension($width, $height) {
+  width: $width;
+  height: $height;
 }
 
-@mixin border ($width, $color, $radius, $type:solid){
-    border-width: $width;
-    border-style: $type;
-    border-color: $color;
-    border-radius: $radius;
+@mixin border($width, $color, $radius, $type: solid) {
+  border-width: $width;
+  border-style: $type;
+  border-color: $color;
+  border-radius: $radius;
 }
 
-@mixin font($size,$weight, $color:$dark){
+@mixin font($size, $weight, $color: $dark) {
   font-size: $size;
   font-weight: $weight;
   color: $color;
 }
 
-@mixin boxShadow($offset, $color,$radius:0.01rem,){
-    box-shadow: $offset $radius $color;
+@mixin boxShadow($offset, $color, $radius: 0.01rem) {
+  box-shadow: $offset $radius $color;
 }
 
-@mixin flexBox($justify, $align, $gap:0, $wrap:""){
-    display: flex;
-    justify-content: $justify;
-    align-items: $align;
-    flex-wrap: $wrap;
-    gap: $gap;
+@mixin flexBox($direction: row, $justify, $align, $gap: 0, $wrap: "") {
+  flex-direction: $direction;
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+  gap: $gap;
 }
 
-@mixin absolutePosition($top:"", $left:"", $right:"", $bottom:""){
-   position: absolute;
-   top: $top;
-   left: $left;
-   right: $right;
-   bottom: $bottom;
+@mixin absolutePosition($top: "", $left: "", $right: "", $bottom: "") {
+  position: absolute;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
 }
 
-
-
+@mixin gridLayout() {
+  display: grid;
+  @content;
+}

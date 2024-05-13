@@ -5,11 +5,20 @@
 @use "./components/input.scss";
 @use "./components/button.scss";
 @use "./components/card.scss";
+@use "./components/scheduleList";
 
 @use "./pages/Home.scss";
 @use "./pages/Futsal.scss";
+@use "./pages/Booking.scss";
 
 @use "./base/typography.scss";
+
+@use "./vendors/tailwind";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 
 

@@ -1,42 +1,53 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import PropTypes from "prop-types";
-import Button from "@/components/FormElements/Button";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+  button,
+} from "@nextui-org/react";
 
-const BasicModal = ({ modalHeader, modalMessage, modalButtons }) => {
-  let showModal = false;
-  const toggleModal = () => (showModal = !showModal);
+export default function BasicModal({
+  openModalText,
+  openModalIcon,
+  title,
+  children,
+  showActionButton = false,
+  actionButtonText,
+  isButtonIconOnly = false,
+  buttonIconClass
+}) {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <div className="basic_modal_wrapper">
-      <div className="basic_modal_section">
-        {/**header for the modal */}
-        <div className="basic_modal_header">
-          <h2>{modalHeader}</h2>
-          <FontAwesomeIcon icon="fa-solid fa-xmark" />
-        </div>
-        {/**content for modal */}
-        <div className="basic_modal_content">
-          <p>{modalMessage}</p>
-        </div>
-        {/**button section for modal */}
-        <div className="basic_modal_buttons">
-            {
-                modalButtons.map(btn=>{
-                    return (
-                        <Button key={btn.id} text={btn.text} onClick={btn.onClick} />
-                    )
-                })
-            }
-        </div>
-      </div>
-    </div>
+    <>
+      <Button onPress={onOpen} isIconOnly={isButtonIconOnly}>
+        {buttonIconClass && <FontAwesomeIcon icon={buttonIconClass} />}
+        {openModalText && openModalText}
+      </Button>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
+              <ModalBody>{children}</ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Close
+                </Button>
+                {showActionButton && (
+                  <Button color="primary" onPress={onClose}>
+                    {actionButtonText}
+                  </Button>
+                )}
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </>
   );
-};
-
-BasicModal.propTypes = {
-  modalHeader: PropTypes.string,
-  modalMessage: PropTypes.string,
-  modalButtons: PropTypes.array,
-};
-
-export default BasicModal;
+}

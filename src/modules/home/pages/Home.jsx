@@ -1,10 +1,8 @@
 import GlobalLayout from "@/layouts/global/GlobalLayout";
-import Header from "@/modules/home/components/Header";
+import Header from "@/components/Header/Header";
 // import Card from "@/components/Cards/Card";
 import FutsalCard from "@/modules/home/components/FutsalCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-
 
 const futsals = [
   {
@@ -12,30 +10,40 @@ const futsals = [
     isAvailable: true,
     location: "Kaushaltar, Bhaktapur",
     price: "1000",
+    imageUrl: "/src/assets/futsal.jpg",
+    phone: "9867541302",
   },
   {
     name: "Royal Futsal",
     isAvailable: true,
     location: "Baneswor, Kathmandu",
     price: "1000",
+    imageUrl: "/src/assets/futsal.jpg",
+    phone: "9867541302",
   },
   {
     name: "Dhanwantari Arena",
     isAvailable: true,
     location: "Kupandole, Lalitpur",
     price: "1000",
+    imageUrl: "/src/assets/futsal.jpg",
+    phone: "9867541302",
   },
   {
     name: "Velocity Arena",
     isAvailable: true,
     location: "Ratopul, Kathmandu",
     price: "1000",
+    imageUrl: "/src/assets/futsal.jpg",
+    phone: "9867541302",
   },
   {
     name: "GA Hall",
     isAvailable: true,
     location: "Thamel, Kathmandu",
     price: "1000",
+    imageUrl: "/src/assets/futsal.jpg",
+    phone: "9867541302",
   },
 ];
 
