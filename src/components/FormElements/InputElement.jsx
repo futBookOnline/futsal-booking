@@ -20,6 +20,7 @@ const InputElement = ({
       isClearable={isClearable}
       description={description}
       labelPlacement={placement} // Pass the labelPlacement prop
+      className="text-black relative"
     />
   );
 };

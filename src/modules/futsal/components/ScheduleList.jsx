@@ -1,11 +1,14 @@
 import BasicCard from "@/components/Cards/BasicCard";
 import { useNavigate } from "react-router-dom";
 
-const ScheduleList = ({ futsalDetail }) => {
+const ScheduleList = ({ bookingDetails }) => {
   const navigate = useNavigate();
 
-  const handleCardClick = (futsalDetail) => {
-    navigate("/booking/" + futsalDetail?.name, { state: futsalDetail });
+  const handleCardClick = (bookingDetails, item) => {
+    bookingDetails["bookingTime"] = item;
+    navigate("/booking/" + bookingDetails?.futsalName, {
+      state: bookingDetails,
+    });
   };
 
   const getSchedule = () => {
@@ -39,7 +42,7 @@ const ScheduleList = ({ futsalDetail }) => {
           <BasicCard
             key={id}
             cardText={item}
-            clickEvent={() => handleCardClick(futsalDetail)}
+            clickEvent={() => handleCardClick(bookingDetails, item)}
           />
         );
       })}

@@ -3,6 +3,7 @@
 
 .booking_page_wrapper {
   @include boxBorder(5rem 0 0 0, 0);
+  @include flexBox(row, center, start, 2.5rem);
 }
 
 .booking_form_wrapper {
@@ -11,15 +12,41 @@
 }
 
 .advance_payment_notice {
-  @include flexBox(row, start, center, .95rem);
-  @include font(.9rem, 400);
+  @include flexBox(row, start, center, 0.95rem);
+  @include font(0.9rem, 400);
 
   & > span {
     cursor: pointer;
     @include font(0.8rem, 700, $steel-blue);
   }
 
-  &>span:hover{
+  & > span:hover {
     text-decoration: underline;
+  }
+}
+
+.booking_details_wrapper {
+  @include border(0.1rem, $light-gray, 0.5rem);
+  @include boxBorder(0, 0.5rem 0.75rem);
+  @include flexBox(column, start,start,.85rem);
+
+  & > p:first-of-type {
+    @include font(1.15rem, 600);
+  }
+}
+
+.booking_info_container {
+  @include flexBox(column, start, start, 0.35rem);
+
+  &>div {
+    @include flexBox(row, start, center, 0.75rem);
+  }
+
+  &>div>p:first-of-type{
+    @include font(.95rem, 600);
+  }
+
+  &>div>p:nth-of-type(2){
+    @include font(.85rem, 500);
   }
 }

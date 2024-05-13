@@ -13,8 +13,20 @@ const Futsal = () => {
     /*getting current futsal details from route*/
   }
 
-  const currentDate = new Date();
+  const date = new Date();
   const currentFutsal = useLocation().state?.futDetail;
+  const currentDate =
+    getShortMonthName(date.getMonth()) +
+    " " +
+    date.getDate() +
+    ", " +
+    date.getFullYear();
+
+  const futsalName  = currentFutsal.name;
+  const bookingDetails = {
+    futsalName:futsalName,
+    bookingDate: currentDate,
+  };
 
   return (
     <GlobalLayout>
@@ -54,13 +66,7 @@ const Futsal = () => {
           </div>
           <div className="schedule_list_container">
             <div className="schedule_header_date">
-              <p>
-                {getShortMonthName(currentDate.getMonth()) +
-                  " " +
-                  currentDate.getDate() +
-                  ", " +
-                  currentDate.getFullYear()}
-              </p>
+              <p>{currentDate}</p>
               <BasicModal
                 isButtonIconOnly={true}
                 buttonIconClass="fa-solid fa-calendar"
@@ -70,7 +76,7 @@ const Futsal = () => {
               </BasicModal>
             </div>
             <Separator styleClass="my-3" />
-            <ScheduleList futsalDetail={currentFutsal}/>
+            <ScheduleList bookingDetails={bookingDetails} />
           </div>
         </div>
       </div>
