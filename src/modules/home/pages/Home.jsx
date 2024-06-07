@@ -3,11 +3,13 @@ import Header from "@/components/Header/Header";
 // import Card from "@/components/Cards/Card";
 import FutsalCard from "@/modules/home/components/FutsalCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import BasicCard from "../../../components/Cards/BasicCard";
+import LoadMore from "../components/LoadMore";
 
 const futsals = [
   {
     name: "Wembley Futsal",
-    isAvailable: true,
+    isOpen: true,
     location: "Kaushaltar, Bhaktapur",
     price: "1000",
     imageUrl: "/src/assets/futsal.jpg",
@@ -15,7 +17,7 @@ const futsals = [
   },
   {
     name: "Royal Futsal",
-    isAvailable: true,
+    isOpen: true,
     location: "Baneswor, Kathmandu",
     price: "1000",
     imageUrl: "/src/assets/futsal.jpg",
@@ -23,7 +25,7 @@ const futsals = [
   },
   {
     name: "Dhanwantari Arena",
-    isAvailable: true,
+    isOpen: false,
     location: "Kupandole, Lalitpur",
     price: "1000",
     imageUrl: "/src/assets/futsal.jpg",
@@ -31,7 +33,7 @@ const futsals = [
   },
   {
     name: "Velocity Arena",
-    isAvailable: true,
+    isOpen: true,
     location: "Ratopul, Kathmandu",
     price: "1000",
     imageUrl: "/src/assets/futsal.jpg",
@@ -39,7 +41,7 @@ const futsals = [
   },
   {
     name: "GA Hall",
-    isAvailable: true,
+    isOpen: false,
     location: "Thamel, Kathmandu",
     price: "1000",
     imageUrl: "/src/assets/futsal.jpg",
@@ -53,33 +55,46 @@ const Home = () => {
       {/**Header navigation pane*/}
       <Header />
       {/**nearby fusals*/}
-      <div className="nearby-container">
-        <div className="nearby-container-header">
-          <p className="nearby-futsals">Nearby Futsals</p>
-          <div className="pagination-container">
-            <FontAwesomeIcon icon="fa-solid fa-circle-left" />
-            <FontAwesomeIcon icon="fa-solid fa-circle-right" />
-          </div>
+      <div className="flex flex-col mt-12">
+        <div className="nearby-container-header px-2 mb-1">
+          <p className="text-xl font-semibold mb-0">Nearby Futsals</p>
         </div>
-        <div className="cards-container">
+        <div className="flex py-2 gap-6 px-2 items-center justify-between">
           {futsals.map((item) => (
-            <FutsalCard key={item} futsalObj={item} />
+            <FutsalCard key={item.name} futsalObj={item} />
           ))}
+          <BasicCard cardText="More.." cardStyle="flex justify-center items-center w-fit" bodyStyle="flex items-center">
+            <LoadMore />
+          </BasicCard>
         </div>
+
       </div>
       {/*Other futsals*/}
-      <div className="all-container">
-        <div className="all-container-header">
-          <p className="all-futsals">All Futsals</p>
-          <div className="pagination-container">
-            <FontAwesomeIcon icon="fa-solid fa-circle-left" />
-            <FontAwesomeIcon icon="fa-solid fa-circle-right" />
-          </div>
+      <div className="flex flex-col mt-12">
+        <div className="nearby-container-header px-2 mb-1">
+          <p className="text-xl font-semibold mb-0">All Futsals</p>
         </div>
-        <div className="cards-container">
+        <div className="flex py-2 gap-6 px-2 items-center justify-between">
           {futsals.map((item) => (
-            <FutsalCard key={item} futsalObj={item} />
+            <FutsalCard key={item.name} futsalObj={item} />
           ))}
+          <BasicCard>
+            <LoadMore />
+          </BasicCard>
+        </div>
+      </div>
+      {/*Events*/}
+      <div className="flex flex-col mt-12">
+        <div className="nearby-container-header px-2 mb-1">
+          <p className="text-xl font-semibold mb-0">Events</p>
+        </div>
+        <div className="flex py-2 gap-6 px-2 items-center justify-between">
+          {futsals.map((item) => (
+            <FutsalCard key={item.name} futsalObj={item} />
+          ))}
+          <BasicCard>
+            <LoadMore />
+          </BasicCard>
         </div>
       </div>
     </GlobalLayout>
