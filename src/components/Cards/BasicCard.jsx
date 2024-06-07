@@ -5,16 +5,21 @@ const BasicCard = ({
   isPressable = true,
   isHoverable = true,
   clickEvent,
+  cardStyle, bodyStyle,
+  children,
 }) => {
   return (
     <Card
       isPressable={isPressable}
-      isHoverable ={isHoverable}
-      className="basic_card hover:bg-slate-400 border-[.1rem] hover:border-slate-400"
+      isHoverable={isHoverable}
+      className={cardStyle}
       onPress={clickEvent}
     >
-      <CardBody>
-        <p>{cardText}</p>
+      <CardBody className={bodyStyle}>
+        {
+          children ? children : <p>{cardText}</p>
+        }
+
       </CardBody>
     </Card>
   );
