@@ -1,8 +1,7 @@
 import GlobalLayout from "@/layouts/global/GlobalLayout";
 import Header from "@/components/Header/Header";
-// import Card from "@/components/Cards/Card";
+import Navbar from "@/components/Navbar/Navbar";
 import FutsalCard from "@/modules/home/components/FutsalCard";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BasicCard from "../../../components/Cards/BasicCard";
 import LoadMore from "../components/LoadMore";
 
@@ -49,11 +48,31 @@ const futsals = [
   },
 ];
 
+const navigationList = [
+  {
+    label: "Home",
+    route: "/"
+  },
+  {
+    label: "Venues",
+    route: ""
+  },
+  {
+    label: "Events",
+    route: ""
+  },
+  {
+    label: "Login",
+    route: "/auth/login"
+  },
+]
+
 const Home = () => {
   return (
     <GlobalLayout>
       {/**Header navigation pane*/}
-      <Header />
+      {/* <Header /> */}
+      <Navbar navList={navigationList} />
       {/**nearby fusals*/}
       <div className="flex flex-col mt-12">
         <div className="nearby-container-header px-2 mb-1">
