@@ -8,7 +8,10 @@ import {
     faCalendar,
     faMobile,
     faPlus,
-    faRotateRight
+    faRotateRight,
+    faMagnifyingGlass,
+    faClock,
+    faDollarSign,
 } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -20,7 +23,10 @@ const iconLibrary = library.add(
     faCalendar,
     faMobile,
     faPlus,
-    faRotateRight
+    faRotateRight,
+    faMagnifyingGlass,
+    faClock,
+    faDollarSign
 )
 
 export default iconLibrary;

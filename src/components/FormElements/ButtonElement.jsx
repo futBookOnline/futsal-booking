@@ -1,4 +1,5 @@
-import { Button, ButtonGroup } from "@nextui-org/button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from "@nextui-org/button";
 
 const ButtonElement = ({
   variant,
@@ -6,19 +7,26 @@ const ButtonElement = ({
   size,
   isDisabled = false,
   buttonLabel,
-  labelStyle="font-medium",
+  labelStyle = "font-medium",
   color,
+  customStyle,
+  isIconOnly,
+  icon
 }) => {
   return (
     <Button
-      className="box-border mt-3 px-8"
+      className={["box-border px-8", customStyle]}
       variant={variant}
       radius={radius}
       size={size}
       isDisabled={isDisabled}
       color={color}
+      isIconOnly={isIconOnly}
     >
-      <p className={labelStyle}>{buttonLabel}</p>
+      {
+        isIconOnly ? <FontAwesomeIcon icon={icon} /> : <p className={labelStyle}>{buttonLabel}</p>
+
+      }
     </Button>
   );
 };
