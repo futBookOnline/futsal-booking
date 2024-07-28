@@ -42,7 +42,7 @@ const NavigationBar = () => {
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 {
                     menuItems.map(item =>
-                        <NavbarItem className="cursor-pointer">
+                        <NavbarItem key={item.label} className="cursor-pointer">
                             <Link to={item.route}>
                                 {item.label}
                             </Link>
