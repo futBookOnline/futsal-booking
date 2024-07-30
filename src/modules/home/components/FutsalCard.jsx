@@ -3,12 +3,12 @@ import BasicCard from "@/components/Cards/BasicCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Image } from "@nextui-org/react";
 
-const FutsalCard = ({ futsalObj, clickEvent }) => {
-  let { name, isOpen, location, price } = futsalObj;
+const FutsalCard = ({ futsalObj }) => {
+  let { name, location, id } = futsalObj;
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    navigate(`futsals/${name.toLowerCase()}`, { state: { futDetail: futsalObj } });
+    navigate(`futsals/${id}`);
   }
 
   return (

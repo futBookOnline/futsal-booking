@@ -7,7 +7,7 @@ const useRelatedApi = async (url, method, payload) => {
   switch (httpMethod) {
     case "GET":
       result = await axios.get(apiUrl);
-      return result.data.futsals;
+      return result.data;
   }
 };
 

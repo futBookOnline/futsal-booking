@@ -5,9 +5,9 @@ const App = () => {
   return (
     <>
       {/*The outlet form the router is displayed here*/}
-      <NextUIProvider>
+      {/* <NextUIProvider>
         <Outlet />
-      </NextUIProvider>
+      </NextUIProvider> */}
       {/*The outlet form the router is displayed here*/}
     </>
   );

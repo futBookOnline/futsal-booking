@@ -1,9 +1,9 @@
-const GlobalLayout = ({children})=>{
+const GlobalLayout = ({ children }) => {
     return (
-        <div className="global-layout" >
-           {children}
+        <div className="global-layout">
+            {children}
         </div>
-    )
-}
+    );
+};
 
-export default GlobalLayout;    
+export default GlobalLayout;
