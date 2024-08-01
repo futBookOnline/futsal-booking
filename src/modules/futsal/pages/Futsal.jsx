@@ -29,7 +29,7 @@ const Futsal = () => {
 
   useEffect(() => {
     fetchData();
-  }, [id])
+  }, [])
 
 
   //component to show when data is Loading
