@@ -57,7 +57,7 @@ const Futsal = () => {
   //component to show when data has finished Loading
   const FutsalContent = () => {
     return <div className="w-full flex gap-8 border-2 p-2 rounded-xl">
-      <Image src={currentFutsal.imageUrl} width="w-[25rem] max-w-[30rem] h-auto" loading={"eager"} />
+      <Image src={currentFutsal.imageUrl} width="w-[25rem] max-w-[30rem] h-auto" loading={"eager"} alt="Futsal Image"/>
       <div className="max-w-[50%] flex flex-col gap-4">
         <p className="text-2xl font-semibold">{currentFutsal.name}</p>
         {/*location */}

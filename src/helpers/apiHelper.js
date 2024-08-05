@@ -8,6 +8,11 @@ const useRelatedApi = async (url, method, payload) => {
     case "GET":
       result = await axios.get(apiUrl);
       return result.data;
+      break;
+    case "POST":
+      result = await axios.post(apiUrl, payload);
+      return { "status": result.status, "data": result.data };
+      break;
   }
 };
 
