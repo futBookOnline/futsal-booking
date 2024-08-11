@@ -11,7 +11,8 @@ const ButtonElement = ({
   color,
   customStyle,
   isIconOnly,
-  icon
+  icon,
+  onClick
 }) => {
   return (
     <Button
@@ -22,6 +23,7 @@ const ButtonElement = ({
       isDisabled={isDisabled}
       color={color}
       isIconOnly={isIconOnly}
+      onClick={onClick}
     >
       {
         isIconOnly ? <FontAwesomeIcon icon={icon} /> : <p className={labelStyle}>{buttonLabel}</p>

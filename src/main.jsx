@@ -7,8 +7,13 @@ import iconLibrary from "@/helpers/iconHelper.js";
 
 import { NextUIProvider } from "@nextui-org/react";
 
+import { Provider } from "react-redux";
+import store from "@/store/store";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <NextUIProvider>
-    <RouterProvider router={router} />
-  </NextUIProvider>
+  <Provider store={store}>
+    <NextUIProvider>
+      <RouterProvider router={router} />
+    </NextUIProvider>
+  </Provider>
 );

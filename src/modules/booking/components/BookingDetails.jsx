@@ -1,8 +1,8 @@
 import Separator from "@/components/Separator/Separator";
 
 const BookingDetails = (props) => {
-  const { futsalName, bookingDate, bookingTime } = props.details;
-  console.log(futsalName);
+
+  const { name, address, contact } = props
 
   return (
     <div className="booking_details_wrapper">
@@ -11,15 +11,15 @@ const BookingDetails = (props) => {
       <div className="booking_info_container">
         <div>
           <p>Futsal:</p>
-          <p>{futsalName}</p>
+          <p>{name}</p>
         </div>
         <div>
-          <p>Booking Date:</p>
-          <p>{bookingDate}</p>
+          <p>Address:</p>
+          <p>{address.street + ", " + address.district} </p>
         </div>
         <div>
-          <p>Booking Time:</p>
-          <p>{bookingTime}</p>
+          <p>Contact:</p>
+          <p>{contact}</p>
         </div>
       </div>
     </div>

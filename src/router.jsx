@@ -6,7 +6,7 @@ import Booking from "@/modules/booking/pages/Booking";
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/futsals/:id", element: <Futsal /> },
-  { path: "/booking/:name", element: <Booking /> },
+  { path: "/booking/:id", element: <Booking /> },
   { path: "*", element: <p>Error 404! page not found</p> },
 ]);
 

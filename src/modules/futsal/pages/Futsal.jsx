@@ -1,30 +1,42 @@
 import GlobalLayout from "@/layouts/global/GlobalLayout";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getShortMonthName } from "@/helpers/dateHelper";
 import NavigationBar from "@/components/Navbar/Navbar";
 import { Image, Skeleton } from "@nextui-org/react";
 import ButtonElement from "@/components/FormElements/ButtonElement";
 import getCurrentFutsal from "@/modules/futsal/api/getCurrentFutsal";
 import { useEffect, useState } from "react";
 
+import { setSelectedFutsal } from "@/store/features/Futsal/futsal"
+import { useDispatch } from "react-redux";
+
+
+
 const Futsal = () => {
   {
     /*getting current futsal details from route*/
   }
 
-  const date = new Date();
-  const { id } = useParams();
 
+  const { id } = useParams();
 
 
   const [currentFutsal, setCurrentFutsal] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [priceList, setPriceList] = useState([]);
 
   const fetchData = async () => {
     const result = await getCurrentFutsal(id);
     if (result) setIsLoading(false);
     setCurrentFutsal(result)
+    setPriceList(JSON.parse(result.priceList));
+  };
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleBookingNavigation = (path) => {
+    dispatch(setSelectedFutsal(currentFutsal))
+    navigate(path)
   };
 
   useEffect(() => {
@@ -57,7 +69,7 @@ const Futsal = () => {
   //component to show when data has finished Loading
   const FutsalContent = () => {
     return <div className="w-full flex gap-8 border-2 p-2 rounded-xl">
-      <Image src={currentFutsal.imageUrl} width="w-[25rem] max-w-[30rem] h-auto" loading={"eager"} alt="Futsal Image"/>
+      <Image src={currentFutsal.imageUrl} width="w-[25rem] max-w-[30rem] h-auto" loading={"eager"} alt="Futsal Image" />
       <div className="max-w-[50%] flex flex-col gap-4">
         <p className="text-2xl font-semibold">{currentFutsal.name}</p>
         {/*location */}
@@ -89,7 +101,7 @@ const Futsal = () => {
       <NavigationBar />
       <GlobalLayout>
 
-         {/* show skeleton loading element or content based on loading state */}
+        {/* show skeleton loading element or content based on loading state */}
         {
           isLoading ? <LoadingStateComponent /> : <FutsalContent />
 
@@ -102,10 +114,10 @@ const Futsal = () => {
           <div className="flex justify-between py-1">
             {/* morning schedule */}
             <div className="flex flex-col gap-4 border-2 rounded-lg px-6 py-2 w-[30%]">
-              <p className="text-lg">Morning</p>
+              {/* <p className="text-lg">Morning</p>
               <p className="flex items-center justify-between text-sm">
                 9:00AM - 10:00 AM
-                <ButtonElement customStyle="bg-orange-600" buttonLabel="NPR. 1200" labelStyle="text-white font-semibold" />
+                <ButtonElement customStyle="bg-orange-600" buttonLabel="NPR. 1200" labelStyle="text-white font-semibold" onClick={() => handleBookingNavigation(`/booking/${id}`)} />
               </p>
               <p className="flex items-center justify-between text-sm">
                 10:00AM - 11:00 AM
@@ -114,7 +126,18 @@ const Futsal = () => {
               <p className="flex items-center justify-between text-sm">
                 11:00AM - 12:00 AM
                 <ButtonElement customStyle="bg-orange-600" buttonLabel="NPR. 1200" labelStyle="text-white font-semibold" />
-              </p>
+              </p> */}
+
+              {
+                priceList.map(item =>
+                  <p className="flex items-center justify-between text-sm">
+                    {item.startingTime} - {item.endingTime}
+                    <ButtonElement customStyle="bg-orange-600" buttonLabel={item.price} labelStyle="text-white font-semibold" 
+                     onClick={()=>handleBookingNavigation(`/booking/${id}`)}
+                    />
+                  </p>)
+              }
+
             </div>
             {/* afternoon schedule */}
             <div className="flex flex-col gap-4 border-2 rounded-lg px-6 py-2 w-[30%]">
