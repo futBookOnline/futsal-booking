@@ -5,8 +5,7 @@ const futsalSlice = createSlice({
     initialState: [],
     reducers: {
         setSelectedFutsal: (state, action) => {
-            state = state.pop();
-            state = [action.payload];
+            return action.payload
         },
     }
 });

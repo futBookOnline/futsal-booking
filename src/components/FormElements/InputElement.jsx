@@ -25,4 +25,4 @@ const InputElement = ({
   );
 };
 
-export default InputElement;
+export default InputElement

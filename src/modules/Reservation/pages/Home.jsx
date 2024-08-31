@@ -1,12 +1,16 @@
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
 import GlobalLayout from "@/layouts/global/GlobalLayout";
 import NavigationBar from "@/components/Navbar/Navbar";
-import FutsalCard from "@/modules/Home/components/FutsalCard";
+import FutsalCard from "@/modules/Reservation/components/FutsalCard";
 import InputElement from "@/components/FormElements/InputElement.jsx"
 import ButtonElement from "@/components/FormElements/ButtonElement.jsx"
-import { useEffect, useState } from "react";
 
-import { getAllFutsals } from "@/modules/Home/api/getFutsals";
-import { useDispatch, useSelector } from "react-redux";
+import { getAllVenues } from "@/modules/Reservation/api";
+import { setSelectedFutsal } from "@/store/features/Futsal/futsal";
+
+
 
 const Home = () => {
 
@@ -19,7 +23,7 @@ const Home = () => {
   const handleFutsals = async () => {
     setLoading(true);
     try {
-      const data = await getAllFutsals();
+      const data = await getAllVenues();
       if (data) {
         setLoading(false);
         setFutsals(data);
@@ -65,27 +69,11 @@ const Home = () => {
                 !loading && !error && futsals.length > 0
 
                   ? futsals.map((futsal) =>
-                    <FutsalCard key={futsal._id} name={futsal.name} address={futsal.address} id={futsal._id} />
+                    <FutsalCard key={futsal._id} {...futsal} />
                   ) :
                   error ? "Error" :
                     "loading"
               }
-
-            </div>
-
-          </div>
-          {/*Other futsals*/}
-          <div className="flex flex-col mt-12">
-            <div className="nearby-container-header px-2 mb-1">
-              <p className="text-xl font-semibold mb-0">All Futsals</p>
-            </div>
-            <div className="flex py-2 gap-6 px-2 items-center justify-between">
-              {/* {futsals.map((item) => (
-                <FutsalCard key={item.name} futsalObj={item} />
-              ))} */}
-              {/* <BasicCard>
-              <LoadMore />
-            </BasicCard> */}
             </div>
           </div>
         </>

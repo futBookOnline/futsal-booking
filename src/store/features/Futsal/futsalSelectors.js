@@ -1,1 +1,1 @@
-export const getCurrentFutsal = (state) => state.futsal[0];
+export const getSelectedFutsal = (state) => state.futsal;
