@@ -3,7 +3,7 @@ import futsalReducer from "./features/Futsal/futsal";
 
 const store = configureStore({
     reducer: {
-        futsal: futsalReducer, // Key should match the slice name
+        futsal: futsalReducer,
     }
 });
 

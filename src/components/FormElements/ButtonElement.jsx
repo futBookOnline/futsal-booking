@@ -26,8 +26,11 @@ const ButtonElement = ({
       onClick={onClick}
     >
       {
-        isIconOnly ? <FontAwesomeIcon icon={icon} /> : <p className={labelStyle}>{buttonLabel}</p>
-
+        isIconOnly ? <FontAwesomeIcon icon={icon} /> :
+          <div className="flex items-center gap-2">
+            {icon && <FontAwesomeIcon icon={icon} />}
+            <p className={labelStyle}>{buttonLabel}</p>
+          </div>
       }
     </Button>
   );

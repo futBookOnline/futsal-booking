@@ -1,60 +1,41 @@
 import GlobalLayout from "@/layouts/global/GlobalLayout";
 import NavigationBar from "@/components/Navbar/Navbar";
-import FutsalCard from "@/modules/home/components/FutsalCard";
+import FutsalCard from "@/modules/Home/components/FutsalCard";
 import InputElement from "@/components/FormElements/InputElement.jsx"
 import ButtonElement from "@/components/FormElements/ButtonElement.jsx"
+import { useEffect, useState } from "react";
 
-const futsals = [
-  {
-    name: "Wembley Futsal",
-    isOpen: true,
-    location: "Kaushaltar, Bhaktapur",
-    price: "1000",
-    imageUrl: "/src/assets/futsal.jpg",
-    phone: "9867541302",
-    id: "668a5f29833dbfd55c81c91f"
-  },
-  {
-    name: "Royal Futsal",
-    isOpen: true,
-    location: "Baneswor, Kathmandu",
-    price: "1000",
-    imageUrl: "/src/assets/futsal.jpg",
-    phone: "9867541302",
-    id: "668a5f29833dbfd55c81c91f"
-  },
-  {
-    name: "Dhanwantari Arena",
-    isOpen: false,
-    location: "Kupandole, Lalitpur",
-    price: "1000",
-    imageUrl: "/src/assets/futsal.jpg",
-    phone: "9867541302",
-    id: "668b952bc77dc4c0664c4e23"
-  },
-  {
-    name: "Velocity Arena",
-    isOpen: true,
-    location: "Ratopul, Kathmandu",
-    price: "1000",
-    imageUrl: "/src/assets/futsal.jpg",
-    phone: "9867541302",
-    id: "668b952bc77dc4c0664c4e23"
-  },
-  {
-    name: "GA Hall",
-    isOpen: false,
-    location: "Thamel, Kathmandu",
-    price: "1000",
-    imageUrl: "/src/assets/futsal.jpg",
-    phone: "9867541302",
-    id: "668b95eec77dc4c0664c4e2c"
-  },
-];
-
-
+import { getAllFutsals } from "@/modules/Home/api/getFutsals";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
+
+  const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [futsals, setFutsals] = useState([]);
+
+  const handleFutsals = async () => {
+    setLoading(true);
+    try {
+      const data = await getAllFutsals();
+      if (data) {
+        setLoading(false);
+        setFutsals(data);
+      }
+    } catch (error) {
+      setError(true);
+    }
+    finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    handleFutsals();
+  }, [])
+
   return (
     <>
       <NavigationBar />
@@ -73,12 +54,23 @@ const Home = () => {
               <p className="text-xl font-semibold mb-0">Nearby Futsals</p>
             </div>
             <div className="flex py-2 gap-6 px-2 items-center justify-between">
-              {futsals.map((item) => (
+              {/* {futsals && futsals.map((item) => (
                 <FutsalCard key={item.name} futsalObj={item} />
-              ))}
+              ))} */}
               {/* <BasicCard cardText="More.." cardStyle="flex justify-center items-center w-fit" bodyStyle="flex items-center">
               <LoadMore />
             </BasicCard> */}
+
+              {
+                !loading && !error && futsals.length > 0
+
+                  ? futsals.map((futsal) =>
+                    <FutsalCard key={futsal._id} name={futsal.name} address={futsal.address} id={futsal._id} />
+                  ) :
+                  error ? "Error" :
+                    "loading"
+              }
+
             </div>
 
           </div>
@@ -88,9 +80,9 @@ const Home = () => {
               <p className="text-xl font-semibold mb-0">All Futsals</p>
             </div>
             <div className="flex py-2 gap-6 px-2 items-center justify-between">
-              {futsals.map((item) => (
+              {/* {futsals.map((item) => (
                 <FutsalCard key={item.name} futsalObj={item} />
-              ))}
+              ))} */}
               {/* <BasicCard>
               <LoadMore />
             </BasicCard> */}

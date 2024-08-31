@@ -2,13 +2,19 @@ import { useNavigate } from "react-router-dom";
 import BasicCard from "@/components/Cards/BasicCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Image } from "@nextui-org/react";
+import { useDispatch } from "react-redux";
+import { setSelectedFutsal } from "@/store/features/Futsal/futsal";
 
-const FutsalCard = ({ futsalObj }) => {
-  let { name, location, id } = futsalObj;
+const FutsalCard = (props) => {
+  let { name, address, id } = props;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleCardClick = () => {
     navigate(`futsals/${id}`);
+    dispatch(setSelectedFutsal({
+      name, address, id
+    }))
   }
 
   return (
@@ -22,7 +28,7 @@ const FutsalCard = ({ futsalObj }) => {
         </div> */}
         <p className="text-sm text-gray-600 font-medium flex items-center gap-2">
           <FontAwesomeIcon icon="fa-solid fa-location-dot" />
-          {location}
+          {address.street}, {address.district}
         </p>
         {/* <p className="text-sm text-gray-600 font-medium flex items-center gap-2">
           <FontAwesomeIcon icon="fa-solid fa-money-check-dollar" />

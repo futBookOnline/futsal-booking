@@ -1,4 +1,4 @@
-import useRelatedApi from "../../../helpers/apiHelper";
+import useRelatedApi from "@/helpers/apiHelper";
 
 const getFutsal = async () => {
     const apiCall = await useRelatedApi("futsals", "GET", null)

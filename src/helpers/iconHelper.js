@@ -12,6 +12,7 @@ import {
     faMagnifyingGlass,
     faClock,
     faDollarSign,
+    faArrowLeft
 } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -26,7 +27,8 @@ const iconLibrary = library.add(
     faRotateRight,
     faMagnifyingGlass,
     faClock,
-    faDollarSign
+    faDollarSign,
+    faArrowLeft
 )
 
 export default iconLibrary;
