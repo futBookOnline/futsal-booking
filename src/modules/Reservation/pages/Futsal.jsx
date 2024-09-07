@@ -33,7 +33,6 @@ const Futsal = () => {
         setIsLoading(true);
         try {
             if (futsal) {
-                console.log(futsal)
                 setCurrentFutsal(futsal)
                 setIsLoading(false);
             }

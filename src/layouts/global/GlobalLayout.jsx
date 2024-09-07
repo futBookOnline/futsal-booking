@@ -1,6 +1,9 @@
-const GlobalLayout = ({ children }) => {
+import LoadingScreen from "@/components/LoadingScreen";
+
+const GlobalLayout = ({ isLoading, children }) => {
     return (
-        <div className="global-layout">
+        <div className="relative h-auto">
+            {isLoading && <LoadingScreen />}
             {children}
         </div>
     );

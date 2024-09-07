@@ -11,6 +11,8 @@ export const getVenueById = async (id) => {
 }
 
 export const createReservation = async (payload) => {
-    const url = "reservations/create-reservation";
-    const result = useRelatedApi(url, "post", payload)
+
+    const resonse = await axiosInstance.post("reservations/create-reservation", payload);
+    return resonse.statusText;
+
 } 

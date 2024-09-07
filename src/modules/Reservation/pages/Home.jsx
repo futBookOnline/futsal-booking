@@ -43,7 +43,7 @@ const Home = () => {
   return (
     <>
       <NavigationBar />
-      <GlobalLayout>
+      <GlobalLayout isLoading={loading}>
         {/**Header navigation pane*/}
         {/* <Header /> */}
         {/**search header bar */}
@@ -66,7 +66,7 @@ const Home = () => {
             </BasicCard> */}
 
               {
-                !loading && !error && futsals.length > 0
+                futsals.length > 0
 
                   ? futsals.map((futsal) =>
                     <FutsalCard key={futsal._id} {...futsal} />
