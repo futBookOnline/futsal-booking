@@ -2,10 +2,8 @@ import { Card, CardBody, Image, Skeleton } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import GlobalLayout from "@/layouts/global/GlobalLayout";
 import NavigationBar from "@/components/Navbar/Navbar";
-
 import { getVenueById } from "@/modules/Reservation/api";
 import { getShortMonthName } from "@/helpers/dateHelper";
 import { useSelector } from "react-redux";
@@ -88,8 +86,7 @@ const Futsal = () => {
 
     return (
         <>
-            <NavigationBar />
-            <GlobalLayout>
+            <GlobalLayout isLoading={isLoading}>
                 {isLoading ? <LoadingStateComponent /> : <FutsalContent />}
                 <div className="w-full flex flex-col mt-4">
                     <div className="w-full flex justify-between">

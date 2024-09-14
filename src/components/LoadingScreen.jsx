@@ -1,8 +1,8 @@
 import { Spinner } from "@nextui-org/react"
 
 const LoadingScreen = () => {
-    return <div className="h-full bg-neutral-800 absolute w-full">
-        <Spinner label="Loading..." color="primary" />
+    return <div className="h-full bg-green-100 absolute w-full min-h-screen z-99 flex items-center justify-center">
+        <Spinner label="Loading..." color="success" />
     </div>
 }
 

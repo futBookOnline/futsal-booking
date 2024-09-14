@@ -7,13 +7,15 @@ import BasicCard from "@/components/Cards/BasicCard";
 import { setSelectedFutsal } from "@/store/features/Futsal/futsal";
 
 const FutsalCard = (props) => {
-    let { name, address, id } = props;
+    let { name, address, _id } = props;
+    
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleCardClick = () => {
-        navigate(`futsal/${id}`);
-        dispatch(setSelectedFutsal(props))
+        dispatch(setSelectedFutsal(props));
+        console.log("current futsal id = ", _id)
+        navigate(`futsal/${_id}`);
     }
 
     return (
