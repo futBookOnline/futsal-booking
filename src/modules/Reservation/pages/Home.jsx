@@ -25,6 +25,7 @@ const Home = () => {
     try {
       const data = await getAllVenues();
       if (data) {
+        console.log("id==", data)
         setLoading(false);
         setFutsals(data);
       }

@@ -11,7 +11,7 @@ const GlobalLayout = ({ isLoading, children }) => {
                 <div className="min-h-screen">
                     <NavigationBar />
                     {/* content wrapper */}
-                    <div className="relative flex flex-col px-32 py-6">
+                    <div className="relative flex flex-col px-5 py-6">
                         {children}
                     </div>
                 </div>
@@ -20,4 +20,3 @@ const GlobalLayout = ({ isLoading, children }) => {
     );
 };
 
-export default GlobalLayout;
