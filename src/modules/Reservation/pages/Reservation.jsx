@@ -19,6 +19,7 @@ const Reservation = () => {
 
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleEmailChange = (e) => {
     const value = e.target.value
@@ -30,37 +31,49 @@ const Reservation = () => {
     setPhoneNumber(value)
   }
 
+  const clearFields = () => {
+    setEmail('');
+    setPhoneNumber('');
+  }
+
   const handleSubmit = async () => {
+
+
+
+    const month = new Date().getMonth();
+    const date = new Date().getDate();
+    const year = new Date().getFullYear();
+
     const payload = {
-      reservationDate: {
-        month: new Date().getMonth(),
-        date: new Date().getDate(), 
-        year: new Date().getFullYear()
-      },
-      reservationTime: {
+      reservationDate: `${year}-${month}-${date}`,
+      reservationTime: JSON.stringify({
         hour: (new Date()).getHours(),
         minute: (new Date()).getMinutes()
-      },
+      }),
       venueId: currentFutsal.userId,
       userEmail: email,
       userContactNumber: phoneNumber
     }
 
     try {
+      setIsLoading(true);
       const response = await createReservation(payload);
-      if (response == "OK") {
+      if (response == 200 || response == 201) {
         alert("data saved");
         const socket = io();
-        socket.emit("new-reservation")
+        socket.emit("new-reservation");
+        clearFields();
       }
     } catch (error) {
-
+      console.error(error)
+      clearFields();
+    } finally {
+      setIsLoading(false)
     }
   }
 
   return (
-    <GlobalLayout>
-      <Header />
+    <GlobalLayout isLoading={isLoading}>
       <p className='text-xl font-semibold mt-[8%] mb-3'>Enter the details below:</p>
       {currentFutsal.name ? <div className='w-full flex gap-8 items-start'>
         <div className='lg:min-w-[45%] flex flex-col gap-3'>
@@ -71,7 +84,7 @@ const Reservation = () => {
             <Radio value="KH">Khalti</Radio>
             <Radio value="FP">PhonePay</Radio>
           </RadioGroup>
-          <ButtonElement customStyle="max-w-fit px-10 bg-primary text-white" buttonLabel="Submit" labelStyle="font-semibold" onClick={handleSubmit}/>
+          <ButtonElement customStyle="max-w-fit px-10 bg-primary text-white" buttonLabel="Submit" labelStyle="font-semibold" onClick={handleSubmit} />
         </div>
 
         <BookingDetails name={currentFutsal.name} address={currentFutsal.address} contact={currentFutsal.contact} date={new Date()} />

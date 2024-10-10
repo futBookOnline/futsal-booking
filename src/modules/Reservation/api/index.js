@@ -11,8 +11,7 @@ export const getVenueById = async (id) => {
 }
 
 export const createReservation = async (payload) => {
-
-    const resonse = await axiosInstance.post("reservations/create-reservation", payload);
-    return resonse.statusText;
+    const response = await axiosInstance.post("reservations/create-reservation", payload);
+    return response.status;
 
 } 

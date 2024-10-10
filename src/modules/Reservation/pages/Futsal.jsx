@@ -2,14 +2,11 @@ import { Card, CardBody, Image, Skeleton } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import GlobalLayout from "@/layouts/global/GlobalLayout";
-import NavigationBar from "@/components/Navbar/Navbar";
-
-import { getVenueById } from "@/modules/Reservation/api";
-import { getShortMonthName } from "@/helpers/dateHelper";
+import { getMonthName } from "@/helpers/dateHelper";
 import { useSelector } from "react-redux";
-import { getSelectedFutsal } from "../../../store/features/Futsal/futsalSelectors";
+import { getSelectedFutsal } from "@/store/features/Futsal/futsalSelectors";
+import { getTwoWeeksFromNow } from "@/helpers/dateHelper";
 
 
 const Futsal = () => {
@@ -18,6 +15,8 @@ const Futsal = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [priceList, setPriceList] = useState([]);
     const [reservationDate, setReservationDate] = useState(new Date());
+
+    getTwoWeeksFromNow();
 
 
 
@@ -88,14 +87,13 @@ const Futsal = () => {
 
     return (
         <>
-            <NavigationBar />
-            <GlobalLayout>
+            <GlobalLayout isLoading={isLoading}>
                 {isLoading ? <LoadingStateComponent /> : <FutsalContent />}
                 <div className="w-full flex flex-col mt-4">
                     <div className="w-full flex justify-between">
                         <p className="text-xl font-semibold">Schedule</p>
                         <div>
-                            {`${getShortMonthName(reservationDate.getMonth())} ${reservationDate.getDate()}, ${reservationDate.getFullYear()}`}
+                            {`${getMonthName(reservationDate.getMonth())} ${reservationDate.getDate()}, ${reservationDate.getFullYear()}`}
                         </div>
                     </div>
                     <div className="w-full flex gap-6 flex-wrap items-center py-2 px-1">
