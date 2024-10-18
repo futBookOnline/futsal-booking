@@ -7,7 +7,7 @@ import { getMonthName } from "@/helpers/dateHelper";
 import { useSelector } from "react-redux";
 import { getSelectedFutsal } from "@/store/features/Futsal/futsalSelectors";
 import { getTwoWeeksFromNow } from "@/helpers/dateHelper";
-
+import { getSlotsById } from "@/modules/Reservation/api";
 
 const Futsal = () => {
     const { id } = useParams();
@@ -15,10 +15,7 @@ const Futsal = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [priceList, setPriceList] = useState([]);
     const [reservationDate, setReservationDate] = useState(new Date());
-
-    getTwoWeeksFromNow();
-
-
+    const [slots, setSlots] = useState([]);
 
     const futsal = useSelector(state => getSelectedFutsal(state));
     const navigate = useNavigate();
@@ -43,8 +40,28 @@ const Futsal = () => {
         }
     }
 
+    const getTimeSlots = async()=>{
+      setIsLoading(true)
+     try {
+      const timeSlots = await getSlotsById(id);
+       console.log('timeSolts=', timeSlots); 
+      const slots = timeSlots.map((item) => ({
+        open: item.startTime,
+        close: item.endTime,
+        price: item.dynamicPrice
+      }));
+
+      setSlots(slots);
+     } catch (error) {
+       console.error(error)
+     } finally{
+      setIsLoading(false);
+    }
+    }
+
     useEffect(() => {
-        handleCurrentFutsal()
+        handleCurrentFutsal();
+        if(id)  getTimeSlots();
     }, [id]);
 
     const LoadingStateComponent = () => (
@@ -97,10 +114,11 @@ const Futsal = () => {
                         </div>
                     </div>
                     <div className="w-full flex gap-6 flex-wrap items-center py-2 px-1">
-                        {currentFutsal.priceList && JSON.parse(currentFutsal.priceList).map((priceItem, index) => (
+                        {slots && slots.map((item, index) => (
                             <Card key={index} style={{ cursor: "pointer" }}>
-                                <CardBody onClick={() => handleBookingNavigation(priceItem.id)}>
-                                    {`${priceItem.startingTime} - ${priceItem.endingTime}`}
+                                <CardBody onClick={() => handleBookingNavigation(item.id)}>
+                                    <p>{`${item.open} - ${item.close}`}</p>
+                                    <p className="text-xs font-semibold text-green-500">NPR. {item.price}</p>
                                 </CardBody>
                             </Card>
                         ))}

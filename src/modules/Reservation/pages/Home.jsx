@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import GlobalLayout from "@/layouts/global/GlobalLayout";
-import NavigationBar from "@/components/Navbar/Navbar";
+// import NavigationBar from "@/components/Navbar/Navbar";
 import FutsalCard from "@/modules/Reservation/components/FutsalCard";
 import InputElement from "@/components/FormElements/InputElement.jsx"
 import ButtonElement from "@/components/FormElements/ButtonElement.jsx"
@@ -27,8 +27,10 @@ const Home = () => {
       if (data) {
         setLoading(false);
         setFutsals(data);
+
       }
     } catch (error) {
+      setLoading(false);
       setError(true);
     }
     finally {
@@ -57,12 +59,6 @@ const Home = () => {
               <p className="text-xl font-semibold mb-0">Nearby Futsals</p>
             </div>
             <div className="flex py-2 gap-6 px-2 items-center justify-between">
-              {/* {futsals && futsals.map((item) => (
-                <FutsalCard key={item.name} futsalObj={item} />
-              ))} */}
-              {/* <BasicCard cardText="More.." cardStyle="flex justify-center items-center w-fit" bodyStyle="flex items-center">
-              <LoadMore />
-            </BasicCard> */}
 
               {
                 futsals.length > 0
@@ -73,6 +69,7 @@ const Home = () => {
                   error ? "Error" :
                     "loading"
               }
+
             </div>
           </div>
         </>
