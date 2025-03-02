@@ -11,7 +11,8 @@ const ButtonElement = ({
   color,
   customStyle,
   isIconOnly,
-  icon
+  icon,
+  onClick
 }) => {
   return (
     <Button
@@ -22,10 +23,14 @@ const ButtonElement = ({
       isDisabled={isDisabled}
       color={color}
       isIconOnly={isIconOnly}
+      onClick={onClick}
     >
       {
-        isIconOnly ? <FontAwesomeIcon icon={icon} /> : <p className={labelStyle}>{buttonLabel}</p>
-
+        isIconOnly ? <FontAwesomeIcon icon={icon} /> :
+          <div className="flex items-center gap-2">
+            {icon && <FontAwesomeIcon icon={icon} />}
+            <p className={labelStyle}>{buttonLabel}</p>
+          </div>
       }
     </Button>
   );

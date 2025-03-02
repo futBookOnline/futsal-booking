@@ -1,8 +1,22 @@
-const GlobalLayout = ({ children }) => {
+import LoadingScreen from "@/components/LoadingScreen";
+import NavigationBar from "../../components/Navbar/Navbar";
+
+const GlobalLayout = ({ isLoading, children }) => {
     return (
-        <div className="global-layout">
-            {children}
-        </div>
+        <>
+            {isLoading ?
+                // retun loading screen
+                <LoadingScreen />
+                :
+                <div className="min-h-screen">
+                    <NavigationBar />
+                    {/* content wrapper */}
+                    <div className="relative flex flex-col px-32 py-6">
+                        {children}
+                    </div>
+                </div>
+            }
+        </>
     );
 };
 

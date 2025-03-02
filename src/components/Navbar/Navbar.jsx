@@ -28,7 +28,9 @@ const NavigationBar = () => {
     ];
 
     return (
-        <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-gray-100">
+        <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-gray-100" style={{
+            position: "static"
+        }}>
             <NavbarContent>
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}

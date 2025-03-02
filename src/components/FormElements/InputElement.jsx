@@ -1,7 +1,9 @@
 import { Input } from "@nextui-org/react";
+import { useState } from "react";
 
 const InputElement = ({
   label,
+  type = "text",
   placement = "inside", // Assuming default placement is "outside"
   placeholder,
   errorMessage,
@@ -9,7 +11,10 @@ const InputElement = ({
   radius = "sm",
   isClearable = true,
   description,
+  onChange
 }) => {
+
+
   return (
     <Input
       label={label} // Pass the label prop
@@ -21,8 +26,10 @@ const InputElement = ({
       description={description}
       labelPlacement={placement} // Pass the labelPlacement prop
       className="text-black relative"
+      type={type}
+      onChange={onChange}
     />
   );
 };
 
-export default InputElement;
+export default InputElement

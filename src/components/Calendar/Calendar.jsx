@@ -1,9 +1,8 @@
 import { Calendar } from "@nextui-org/react";
-import { parseDate } from "@internationalized/date";
-import { useState } from "react";
 
-export default function App() {
-  let [value, setValue] = useState(parseDate("2024-03-07"));
+const Calendar = (props) => {
+  const date = new Date();
+  const { value, setValue, minValue, maxValue, defaultValue = date,  } = props;
 
   return (
     <Calendar
