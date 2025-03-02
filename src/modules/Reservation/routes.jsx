@@ -6,7 +6,7 @@ import Futsal from "./pages/Futsal";
 const routes = [
     { path: "/", element: <Home /> },
     { path: "/futsal/:id", element: <Futsal /> },
-    { path: "/reservation/:id", element: <Reservation /> }
+    { path: "/reservation/:slotId", element: <Reservation /> }
 ]
 
 export default routes;

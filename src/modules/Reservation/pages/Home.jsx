@@ -8,14 +8,8 @@ import InputElement from "@/components/FormElements/InputElement.jsx"
 import ButtonElement from "@/components/FormElements/ButtonElement.jsx"
 
 import { getAllVenues } from "@/modules/Reservation/api";
-import { setSelectedFutsal } from "@/store/features/Futsal/futsal";
-
-
 
 const Home = () => {
-
-  const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [futsals, setFutsals] = useState([]);
@@ -25,10 +19,8 @@ const Home = () => {
     try {
       const data = await getAllVenues();
       if (data) {
-        console.log("id==", data)
         setLoading(false);
         setFutsals(data);
-
       }
     } catch (error) {
       setLoading(false);
@@ -46,10 +38,8 @@ const Home = () => {
   return (
     <>
       <GlobalLayout isLoading={loading}>
-        {/**Header navigation pane*/}
-        {/* <Header /> */}
-        {/**search header bar */}
         <>
+         {/**search bar*/}
           <div className="w-full mt-6 flex items-center justify-between gap-4">
             <InputElement placement="inside" label="" placeholder="Search..." />
             <ButtonElement customStyle="bg-gray-400" isIconOnly={true} icon="fa-sold fa-magnifying-glass" />
@@ -65,7 +55,7 @@ const Home = () => {
                 futsals.length > 0
 
                   ? futsals.map((futsal) =>
-                      <FutsalCard key={futsal.userId} {...futsal} />
+                      <FutsalCard key={futsal._id} {...futsal} />
                   ) :
                   error ? "Error" :
                     "loading"

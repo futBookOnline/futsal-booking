@@ -44,8 +44,8 @@ const Futsal = () => {
       setIsLoading(true)
      try {
       const timeSlots = await getSlotsById(id);
-       console.log('timeSolts=', timeSlots); 
       const slots = timeSlots.map((item) => ({
+        id: item._id,
         open: item.startTime,
         close: item.endTime,
         price: item.dynamicPrice
@@ -91,12 +91,12 @@ const Futsal = () => {
                 <div className="flex items-center gap-2">
                     <FontAwesomeIcon icon="fa-solid fa-clock" className="text-teal-500" />
                     <p className="font-semibold">Open:</p>
-                    <p>9:00 AM - 10:00 PM</p>
+                    <p>{`${currentFutsal.opensAt} - ${currentFutsal.closesAt}`}</p>
                 </div>
                 <div className="flex items-center gap-2">
                     <FontAwesomeIcon icon="fa-solid fa-dollar-sign" className="text-green-500" />
                     <p className="font-semibold">Price:</p>
-                    <p>NPR. 1200 per hour</p>
+                    <p>NPR. 1000 per hour</p>
                 </div>
             </div>
         </div>
@@ -113,12 +113,16 @@ const Futsal = () => {
                             {`${getMonthName(reservationDate.getMonth())} ${reservationDate.getDate()}, ${reservationDate.getFullYear()}`}
                         </div>
                     </div>
-                    <div className="w-full flex gap-6 flex-wrap items-center py-2 px-1">
+                    <div className="w-full flex gap-6 flex-wrap justify-evenly items-center py-2 px-1">
                         {slots && slots.map((item, index) => (
-                            <Card key={index} style={{ cursor: "pointer" }}>
+                            <Card key={index} style={{ 
+                                'cursor': "pointer",
+                                'min-width':"15rem"
+                                }}
+                            >
                                 <CardBody onClick={() => handleBookingNavigation(item.id)}>
                                     <p>{`${item.open} - ${item.close}`}</p>
-                                    <p className="text-xs font-semibold text-green-500">NPR. {item.price}</p>
+                                    <p className="text-sm font-semibold text-green-500">NPR. {item.price}</p>
                                 </CardBody>
                             </Card>
                         ))}

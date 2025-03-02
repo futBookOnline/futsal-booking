@@ -18,7 +18,8 @@ export const createReservation = async (payload) => {
 export const getSlotsById=async (id)=>{
   const response = await axiosInstance.get('/slots/venue', {
     params: {
-        venueId: id
+        venueId: id,
+        date: new Date()
     }
   });
   return response.data;
